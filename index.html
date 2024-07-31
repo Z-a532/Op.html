@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Engine Add-on</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .search-container input {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+      width: 60%;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .search-engine-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .search-engine-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .search-engine-list li:last-child {
+      border-bottom: none;
+    }
+
+    .search-engine-list li button {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Search Engine Add-on</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button onclick="searchWithSelectedEngine()">Search</button>
+    </div>
+    <ul class="search-engine-list" id="searchEngineList">
+      <li>
+        <span>Google</span>
+        <button onclick="setSearchEngine('https://www.google.com/search?q=')">Add</button>
+      </li>
+      <li>
+        <span>Bing</span>
+        <button onclick="setSearchEngine('https://www.bing.com/search?q=')">Add</button>
+      </li>
+      <li>
+        <span>Yahoo</span>
+        <button onclick="setSearchEngine('https://search.yahoo.com/search?p=')">Add</button>
+      </li>
+      <li>
+        <span>DuckDuckGo</span>
+        <button onclick="setSearchEngine('https://duckduckgo.com/?q=')">Add</button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    let selectedSearchEngine = 'https://www.google.com/search?q=';
+
+    function setSearchEngine(engineUrl) {
+      selectedSearchEngine = engineUrl;
+    }
+
+    function searchWithSelectedEngine() {
+      const searchInput = document.getElementById('searchInput').value;
+      window.open(selectedSearchEngine + encodeURIComponent(searchInput), '_blank');
+    }
+  </script>
+</body>
+</html>
